@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 // TODO /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-// FIND ALL THE CITIES THAT WITHIN X DISTANCE OF YOU
-// 1. import city data
+// FIND ALL THE CITIES THAT ARE WITHIN X DISTANCE OF YOU
+// 1. Import the city data
 // 2. Setup your settings (city and maxDistance)
-// 3. find (or write) code to calculate the distance between 2 coodinate points on Earth (4 ways in this doc)
-// 4. find your current city by in the array of all cities using Array.find() - save it for later
-// 5. Loop over every city in the array and calculate the distance from current city.  keep those that are less than X from your city.  Use Array.filter()
-// 6. Return the number of cities that you have left
+// 3. Find (or write) code to calculate the distance between 2 coordinate points on Earth (4 ways in this doc) - Install the packages if needed
+// 4. Find your current city in the array of all cities using Array.find() - save it for later
+// 5. Loop over every city in the array and calculate the distance from current city.  Keep those that are less than X (maxDistance) from your city.  Use Array.filter()
+// 6. Return the number of cities that you have left in your new array after filtering
 
 
 // imports
@@ -47,7 +47,7 @@ function byHandHaversine(lat1,lon1,lat2,lon2) {
 
   function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     var R     = 6371; // Radius of the earth in km
-    var M     = Math
+    var M     = Math  // Get the match library from javascript
     var dLat  = deg2rad(lat2-lat1)
     var dLon  = deg2rad(lon2-lon1) 
     var a     = M.sin(dLat/2) * M.sin(dLat/2) + M.cos(deg2rad(lat1)) * M.cos(deg2rad(lat2)) * M.sin(dLon/2) * M.sin(dLon/2)
@@ -66,7 +66,7 @@ function byHandHaversine(lat1,lon1,lat2,lon2) {
 const final = cityData.filter(function(city){   
   // get the distance
   var dist = byHandHaversine(currentCity.lat, currentCity.lon, city.lat, city.lon)  // by hand
-  // var dist = distanceFrom([currentCity.lat, currentCity.lon]).to([city.lat, city.lon]).in(unit) // Jimmy
+  // var dist = distanceFrom([currentCity.lat, currentCity.lon]).to([city.lat, city.lon]).in('km') // Jimmy
   // var dist = calculateDistance(currentCity.lat, currentCity.lon, city.lat, city.lon) // Chloe
   // var dist = haversine({ latitude: currentCity.lat, longitude: currentCity.lon },{ latitude: city.lat, longitude: city.lon }) // Clint
 
